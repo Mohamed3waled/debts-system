@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الشركاء | نظام الحسابات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../dashboard.css">
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-brand">
+            <i class="fa-solid fa-handshake"></i>
+            <span> حسابات الشركاء</span>
+        </div>
+        <a href="../dashboard.html" class="btn-back">
+            <i class="fa-solid fa-arrow-right"></i> عودة للوحة
+        </a>
+    </nav>
+
+    <main class="dashboard-container">
+        <div class="modern-card form-card section-container">
+            <form id="addPartnerForm">
+                <h3 class="section-title"><i class="fa-solid fa-user-plus"></i> تسجيل شريك جديد</h3>
+                    
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>اسم الشريك <span style="color:red;">*</span></label>
+                        <input type="text" id="partnerName" required placeholder="اكتب اسم الشريك ثلاثي">
+                    </div>
+                    <div class="input-group">
+                        <label>رقم التليفون (اختياري)</label>
+                        <input type="tel" id="partnerPhone" placeholder="01X XXXX XXXX">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group" style="flex: 1;">
+                        <label>رأس المال المسلّم (جنية) <span style="color:red;">*</span></label>
+                        <input type="number" id="partnerAmount" required placeholder="مثال: 50000">
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-bottom: 20px;">
+                    <div class="input-group" style="min-width: 100%;">
+                        <label>ملاحظات وتفاصيل الشراكة (اختياري)</label>
+                        <textarea id="partnerNotes" placeholder="اكتب هنا أي ملاحظات، بنود الشراكة، أو تفاصيل الاتفاق..."></textarea>
+                    </div>
+                </div>
+
+                <div class="calc-summary" style="background: rgba(243, 156, 18, 0.05); color: #d35400; border-color: rgba(243, 156, 18, 0.3);">
+                    <i class="fa-solid fa-chart-pie"></i> إجمالي رأس مال الشركاء في البزنس حالياً: <strong id="totalCapitalDisplay">0</strong> ج.م
+                </div>
+
+                <button type="submit" class="btn-submit" style="background: linear-gradient(90deg, #f39c12, #d35400);">
+                    <i class="fa-solid fa-floppy-disk"></i> حفظ الشريك في النظام
+                </button>
+            </form>
+        </div>
+        
+        <hr class="divider" id="sectionDivider">
+
+        <div class="search-container">
+            <i class="fa-solid fa-search search-icon"></i>
+            <input type="text" id="searchInput" placeholder="ابحث باسم الشريك...">
+        </div>
+
+        <div id="partnersContainer" class="responsive-grid">
+        </div>
+
+    </main>
+
+    <script type="module" src="partner.js"></script>
+</body>
+</html>
