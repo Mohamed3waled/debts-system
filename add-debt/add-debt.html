@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المديونيات | نظام المديونيات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../dashboard.css">
+</head>
+
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-brand">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+            <span>إدارة المديونيات</span>
+        </div>
+        <a href="../dashboard.html" class="btn-back">
+            <i class="fa-solid fa-arrow-right"></i> عودة للوحة
+        </a>
+    </nav>
+
+    <main class="dashboard-container">
+        <div class="modern-card form-card section-container">
+            <form id="addDebtForm">
+                <h3 class="section-title"><i class="fa-solid fa-user-plus"></i> بيانات العميل والمديونية</h3>
+                
+                <div class="form-row">
+                    <div class="input-group" style="grid-column: 1 / -1;">
+                        <label>نوع المديونية <span style="color:red;">*</span></label>
+                        <select id="debtType" style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 10px; font-family: 'Rubik'; font-size: 14px; background: #fff; cursor: pointer; font-weight: 500;">
+                            <option value="lia">ليّـا ( استلام/قبض)</option>
+                            <option value="alia">عليّـا ( دفع/صرف)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>الاسم <span style="color:red;">*</span></label>
+                        <input type="text" id="clientName" required placeholder="اكتب اسم الشخص أو الجهة">
+                    </div>
+                    <div class="input-group" id="phoneGroup">
+                        <label>رقم التليفون (اختياري)</label>
+                        <input type="tel" id="clientPhone" placeholder="01X XXXX XXXX">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>المبلغ (جنية) <span style="color:red;">*</span></label>
+                        <input type="number" id="debtAmount" required placeholder="مثال: 5000">
+                    </div>
+                    <div class="input-group" id="reasonGroup">
+                        <label>السبب (اختياري)</label>
+                        <input type="text" id="debtReason" placeholder="مثال: حساب بضاعة، سلفة، توريد...">
+                    </div>
+                    <div class="input-group" id="dueDateGroup">
+                        <label>تاريخ نهاية التسديد (اختياري)</label>
+                        <input type="date" id="dueDate">
+                    </div>
+                </div>
+
+                <div class="form-row" id="notesRow">
+                    <div  class="input-group" id="notesGroup" style="grid-column: 1 / -1; width: 100%; height: auto;">
+                        <label>ملاحظة إضافية (اختياري)</label>
+                        <textarea type="text" style=" resize: none; height: 200px;" id="debtNotes" placeholder="اكتب أي ملاحظات أو تفاصيل أخرى هنا..."></textarea>
+                    </div>
+                </div>
+
+                 <div class="calc-summary" id="dynamicDueDateDisplay" style="background: rgba(46, 204, 113, 0.05); color: #27ae60; border-color: rgba(46, 204, 113, 0.3); padding: 12px; border-radius: 8px; font-family: 'Rubik', sans-serif; font-size: 14px; text-align: center; display: block;">
+                    </div>
+
+                <button type="submit" class="btn-submit">
+                    <i class="fa-solid fa-floppy-disk"></i> حفظ في النظام
+                </button>
+            </form>
+        </div>
+
+        <hr class="divider" id="sectionDivider">
+
+        <div class="search-container">
+            <i class="fa-solid fa-search search-icon"></i>
+            <input type="text" id="searchInput" placeholder="ابحث بالاسم لعرض الحسابات...">
+        </div>
+
+        <div id="debtsContainer" class="responsive-grid">
+        </div>
+
+    </main>
+
+    <script type="module" src="add-debt.js?v=5"></script>
+</body>
+
+</html>

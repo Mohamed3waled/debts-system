@@ -1,0 +1,917 @@
+/* Develop py Mohamed Waled */
+
+/* =========================================
+   1. الإعدادات العامة والألوان الأساسية
+   ========================================= */
+:root {
+    --bg-color: #f8f9fa;
+    --text-main: #2b2d42;
+    --text-muted: #8d99ae;
+    --primary: #4361ee;
+    --secondary: #3a0ca3;
+    --danger: #ef233c;
+    --success: #27ae60;
+    --card-bg: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+    direction: rtl;
+}
+
+/* =========================================
+   2. شاشة تسجيل الدخول (Login)
+   ========================================= */
+.login-card {
+    background: var(--card-bg);
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 400px;
+    margin: 100px auto;
+}
+
+.login-card h2 {
+    text-align: center;
+    color: var(--secondary);
+    margin-bottom: 25px;
+}
+
+/* =========================================
+   3. الشريط العلوي المشترك (Navbar)
+   ========================================= */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: var(--card-bg);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.nav-brand {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* أزرار الشريط العلوي */
+.btn-danger,
+.btn-back {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    border: none;
+}
+
+.btn-danger {
+    background: rgba(239, 35, 60, 0.1);
+    color: var(--danger);
+}
+
+.btn-danger:hover {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-back {
+    background: rgba(67, 97, 238, 0.1);
+    color: var(--primary);
+}
+
+.btn-back:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* =========================================
+   4. لوحة التحكم الرئيسية (Dashboard)
+   ========================================= */
+.dashboard-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.welcome-section h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.welcome-section p {
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+/* شبكة الكروت */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.modern-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-decoration: none;
+    color: var(--text-main);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.modern-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+}
+
+.modern-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.modern-card:hover::before {
+    transform: scaleX(1);
+}
+
+.card-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.modern-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.modern-card p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.card-action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.modern-card:hover .card-action {
+    gap: 12px;
+}
+
+/* ألوان الكروت المخصصة */
+.primary-card .card-icon {
+    background: rgba(67, 97, 238, 0.1);
+    color: var(--primary);
+}
+.primary-card .card-action {
+    color: var(--primary);
+}
+
+.secondary-card .card-icon {
+    background: rgba(58, 12, 163, 0.1);
+    color: var(--secondary);
+}
+.secondary-card .card-action {
+    color: var(--secondary);
+}
+
+.success-card .card-icon {
+    background: rgba(46, 204, 113, 0.1);
+    color: var(--success);
+}
+.success-card .card-action {
+    color: var(--success);
+}
+.success-card::before {
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+}
+
+.notes-card .card-icon {
+    background: rgba(243, 156, 18, 0.1);
+    color: #f39c12;
+}
+.notes-card .card-action {
+    color: #f39c12;
+}
+.notes-card::before {
+    background: linear-gradient(90deg, #f1c40f, #f39c12);
+}
+
+.partner-card .card-icon {
+    background: rgba(243, 156, 18, 0.1);
+    color: #f39c12;
+}
+.partner-card .card-action {
+    color: #f39c12;
+}
+.partner-card::before {
+    background: linear-gradient(90deg, #f1c40f, #f39c12);
+}
+
+/* =========================================
+   5. النماذج وشاشات الإضافة (Forms)
+   ========================================= */
+.form-card {
+    max-width: 800px;
+    margin: 0 auto;
+    cursor: default;
+}
+.form-card:hover {
+    transform: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.section-title {
+    font-size: 18px;
+    color: var(--secondary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.input-group {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.3s;
+    outline: none;
+    font-family: 'Rubik', sans-serif;
+}
+input:focus {
+    border-color: var(--primary);
+    background: #f8faff;
+}
+
+.divider {
+    border: none;
+    height: 1px;
+    background: #e9ecef;
+    margin: 30px 0;
+    width: 100%;
+}
+
+.calc-summary {
+    background: rgba(58, 12, 163, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 25px;
+    border: 1px dashed rgba(58, 12, 163, 0.3);
+    width: 100%;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.btn-submit:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+}
+.btn-submit:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* =========================================
+   6. الجداول وشاشة العرض (Tables)
+   ========================================= */
+.table-container {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    margin-top: 20px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.debts-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    text-align: right;
+}
+.debts-table th {
+    background-color: var(--secondary);
+    color: #ffffff;
+    padding: 15px;
+    font-weight: 500;
+}
+.debts-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eeeeee;
+    color: var(--text-main);
+}
+.debts-table tbody tr:hover {
+    background-color: #f8faff;
+}
+
+.action-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: 0.3s;
+}
+.action-btn.view {
+    background-color: rgba(46, 204, 113, 0.1);
+    color: var(--success);
+}
+.action-btn.view:hover {
+    background-color: var(--success);
+    color: white;
+}
+
+/* =========================================
+   7. تنسيقات الكروت المتجاوبة لصفحات المديونيات
+   ========================================= */
+.responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+    width: 100%;
+    align-items: start;
+}
+
+.data-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+.data-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+    padding-bottom: 12px;
+}
+.card-header h4 {
+    font-size: 16px;
+    color: var(--text-main);
+    font-weight: 700;
+    margin: 0;
+}
+
+.card-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.info-item .label {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.info-item .value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-main);
+    direction: ltr;
+}
+
+.money-highlight { font-size: 16px; font-weight: 800; }
+.money-red { color: var(--danger); }
+
+/* شريط البحث المعتاد للديون */
+.search-container {
+    position: relative;
+    max-width: 850px;
+    margin: 0 auto 40px auto;
+}
+.search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 18px;
+}
+#searchInput {
+    width: 100%;
+    padding: 18px 50px 18px 20px;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background: #ffffff;
+}
+#searchInput:focus {
+    border-color: rgba(67, 97, 238, 0.5);
+    box-shadow: 0 10px 30px rgba(67, 97, 238, 0.1);
+    outline: none;
+}
+
+.debt-card {
+    border-right: 2px solid #ff7675;
+    background: linear-gradient(135deg, #ffffff 60%, #fff5f5 100%);
+}
+.plan-card {
+    border-right: 2px solid #74b9ff !important;
+    background: linear-gradient(135deg, #ffffff 60%, #f0f7ff 100%);
+}
+
+.card-actions-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    padding-top: 20px;
+}
+.card-actions-row button {
+    flex: 1;
+    padding: 8px 5px;
+    border-radius: 10px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid transparent;
+}
+
+.action-edit-btn {
+    background: #f1f5f9;
+    color: #4361ee;
+    border: 1px solid #e2e8f0;
+}
+.action-edit-btn:hover {
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+}
+
+.btn-delete {
+    background: #f8fafc;
+    color: var(--danger);
+    border-color: #e2e8f0;
+}
+.btn-delete:hover {
+    background: linear-gradient(135deg, #ef233c, #d90429);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(239, 35, 60, 0.3);
+}
+
+.btn-whatsapp {
+    background: rgba(37, 211, 102, 0.08);
+    color: #128c7e;
+    border-color: rgba(37, 211, 102, 0.2);
+}
+.btn-whatsapp:hover {
+    background: linear-gradient(135deg, #25D366, #128c7e);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+.action-remind-btn {
+    background: #fff8f1 !important;
+    color: #e67e22 !important;
+    border-color: #fbdcb9 !important;
+    animation: alarmPulse 1s infinite;
+}
+.action-remind-btn:hover {
+    background: linear-gradient(135deg, #f39c12, #d35400) !important;
+    color: white !important;
+    animation: none;
+    box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
+}
+
+@keyframes alarmPulse {
+    0% { box-shadow: 0 0 0 0 rgba(230, 126, 34, 0.4); }
+    70% { box-shadow: 0 0 0 8px rgba(230, 126, 34, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(230, 126, 34, 0); }
+}
+
+.action-later-btn {
+    background: #f1f5f9 !important;
+    color: #64748b !important;
+    border-color: #cbd5e1 !important;
+}
+.action-later-btn:hover {
+    background: linear-gradient(135deg, #94a3b8, #64748b) !important;
+    color: white !important;
+    border-color: transparent !important;
+    box-shadow: 0 5px 15px rgba(100, 116, 139, 0.3);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 24px;
+    padding: 30px;
+    transform: translateY(-50px) scale(0.95);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+.modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
+
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.close-btn {
+    background: #f1f5f9; border: none; width: 35px; height: 35px; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center; font-size: 18px; color: var(--danger); cursor: pointer; transition: 0.3s;
+}
+.close-btn:hover { background: var(--danger); color: white; }
+
+.section-container { margin-bottom: 50px !important; }
+#sectionDivider {
+    margin: 40px auto !important;
+    width: 70% !important;
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+}
+
+/* =========================================
+   8. مربع الآيات القرآنية والشركاء والتنبيهات
+   ========================================= */
+.quran-container {
+    margin: 25px auto 0;
+    max-width: 600px;
+    padding: 15px 25px;
+    background: rgba(67, 97, 238, 0.02);
+    border: 2px dashed rgba(67, 97, 238, 0.4);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    transition: all 0.5s ease-in-out;
+}
+.quran-container i { font-size: 22px; color: var(--primary); }
+.quran-container p { font-size: 18px !important; color: var(--secondary) !important; font-weight: 700; margin: 0 !important; transition: opacity 0.5s ease; }
+.quran-container:hover { background: rgba(67, 97, 238, 0.05); border-color: var(--primary); }
+
+textarea {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.3s;
+    outline: none;
+    font-family: 'Rubik', sans-serif;
+    resize: vertical;
+    min-height: 100px;
+}
+textarea:focus { border-color: var(--primary); background: #f8faff; }
+
+.btn-deposit { background: rgba(46, 204, 113, 0.1); color: #27ae60; border-color: rgba(46, 204, 113, 0.2) !important; }
+.btn-deposit:hover { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; border-color: transparent !important; box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3); }
+
+.btn-withdraw { background: rgba(231, 76, 60, 0.1); color: #e74c3c; border-color: rgba(231, 76, 60, 0.2) !important; }
+.btn-withdraw:hover { background: linear-gradient(135deg, #ff7675, #e74c3c); color: white; border-color: transparent !important; box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3); }
+
+.btn-action { padding: 8px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid transparent; transition: 0.3s; display: inline-flex; align-items: center; justify-content: center; gap: 5px; font-family: 'Rubik', sans-serif; }
+.btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
+
+.bg-deposit { background: #dcfce7; color: #166534; }
+.bg-withdraw { background: #fee2e2; color: #991b1b; }
+.bg-status { background: #e0e7ff; color: #3730a3; }
+.bg-edit { background: #fef3c7; color: #92400e; }
+.bg-delete { background: #f3f4f6; color: #374151; }
+
+.swal2-popup { border-radius: 20px !important; font-family: 'Rubik', sans-serif !important; padding: 20px !important; }
+.swal2-input { border-radius: 10px !important; border: 1px solid #e2e8f0 !important; font-family: 'Rubik', sans-serif !important; }
+
+.statement-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 10px; }
+.statement-table th { background: #f8fafc; padding: 15px; color: #64748b; font-size: 13px; border-bottom: 2px solid #e2e8f0; }
+.statement-table td { padding: 15px; border-bottom: 1px solid #f1f5f9; font-size: 14px; color: #334155; }
+.statement-table tr:nth-child(even) { background: #fdfdfd; }
+
+.empty-state { border: 2px dashed #cbd5e1; border-radius: 15px; padding: 40px; text-align: center; color: #64748b; font-weight: 600; background: #fbfbfb; margin: 20px auto; width: 90%; }
+.bg-delete-danger { background: #fee2e2 !important; color: #b91c1c !important; border: 1px solid #fca5a5 !important; }
+.bg-delete-danger:hover { background: #ef4444 !important; color: white !important; }
+
+.modern-form-group { margin-bottom: 15px; text-align: right; }
+.modern-form-group label { display: block; font-size: 14px; font-weight: 600; color: #475569; margin-bottom: 6px; }
+.modern-input { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-family: inherit; }
+.modern-textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; min-height: 80px; font-family: inherit; resize: none; }
+
+@keyframes chicBlink {
+    0%, 100% { opacity: 1; filter: drop-shadow(0 0 4px rgba(239, 35, 60, 0.6)); }
+    50% { opacity: 0.35; filter: drop-shadow(0 0 0px transparent); }
+}
+.overdue-blink { animation: chicBlink 2s infinite ease-in-out; }
+
+/* ========================================================
+   9. [تعديل مستهدف]: نظام المفكرة الذكية النهائي الصارم (Strict 2-Columns)
+   ======================================================== */
+
+/* حاوية البحث المخصصة لصفحة الملاحظات لمنع تداخل النص مع الأيقونة */
+.search-container {
+    position: relative;
+    max-width: 100% !important;
+    margin: 0 auto 30px auto;
+    width: 100%;
+}
+.search-container .search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 18px;
+    z-index: 5;
+}
+
+/* ضبط حقل البحث ليكون متناسقاً وبحواف أمان مخصصة لليمين */
+#noteSearch {
+    width: 100% !important;
+    padding: 15px 55px 15px 20px !important;
+    border-radius: 12px !important;
+    border: 2px solid #e9ecef !important;
+    background: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 500;
+    outline: none !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+    transition: all 0.3s ease;
+}
+#noteSearch:focus {
+    border-color: var(--primary) !important;
+    background: #f8faff !important;
+}
+
+/* شبكة صارمة تعرض كرتين جنب بعض في الكمبيوتر والموبايل والجديد فوق أول واحد */
+.notes-masonry-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* كرتين جنب بعض في كل الشاشات غصب عن المتصفح */
+    gap: 16px !important;
+    width: 100% !important;
+    margin-top: 25px;
+    align-items: start !important; /* الكروت لا تتمطط عمودياً وتغلق على قد كلامها */
+}
+
+#notesContainer {
+    display: contents !important; /* تمرير الكروت مباشرة للشبكة الأساسية */
+}
+
+/* كارت الملاحظة - بيفرش أوتوماتيك على قد محتواه بدون تمطيط عريض */
+.note-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 18px;
+    display: flex !important;
+    flex-direction: column;
+    width: 100% !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.note-card:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transform: translateY(-2px);
+    border-color: #cbd5e1;
+}
+
+/* كارت زرار الإضافة الافتراضي الموحد للسيستم */
+.add-note-trigger {
+    border: 2px dashed rgba(67, 97, 238, 0.3) !important;
+    background: rgba(67, 97, 238, 0.01) !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 145px;
+    gap: 8px;
+}
+.add-note-trigger:hover { border-color: #4361ee; background: rgba(67, 97, 238, 0.04); }
+
+/* حجم الخطوط الكبير والواضح جداً ليكون متقفل ومتشاف */
+.note-title {
+    font-size: 18px !important;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 10px 0;
+}
+
+/* [تعديل مستهدف]: الكارت بيطول ويفرش براحته لـ 12 سطر كاملين لو الكلام كتير من بره */
+.note-content {
+    font-size: 16px !important;
+    color: #475569;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 12; /* فتحنا الليميت لـ 12 سطر عشان الكارت يطول براحته غصب عنه */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 6px;
+}
+
+.note-footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 13px;
+    color: #94a3b8;
+    border-top: 1px dashed #f1f5f9;
+    padding-top: 8px;
+    margin-top: 6px;
+}
+
+/* ========================================================
+   10. ستارة المودال والبوب أب والتحكم بالـ Z-Index
+   ======================================================== */
+.note-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(6px);
+    z-index: 999; /* تراجع المودال لضمان ظهور الـ Alert فوقه */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.note-modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+.note-modal {
+    background: #ffffff;
+    width: 92%;
+    max-width: 850px;
+    height: 80vh;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.95) translateY(20px);
+    transition: transform 0.3s ease;
+}
+.note-modal-overlay.active .note-modal { transform: scale(1) translateY(0); }
+
+.note-input-title { width: 100%; border: none; outline: none; font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 15px; font-family: 'Rubik'; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+.note-input-body { width: 100%; flex-grow: 1; border: none; outline: none; font-size: 16px; color: #475569; resize: none; font-family: 'Rubik'; line-height: 1.7; }
+.modal-actions-row { display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px; border-top: 1px solid #f1f5f9; padding-top: 12px; }
+
+.btn-modal { padding: 10px 22px; border-radius: 10px; font-family: 'Rubik'; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+.btn-modal-save { background: #4361ee; color: white; }
+.btn-modal-save:hover { background: #304ffe; }
+.btn-modal-close { background: #f1f5f9; color: #64748b; }
+.btn-modal-close:hover { background: #e2e8f0; }
+.btn-modal-delete { background: rgba(239, 35, 60, 0.1); color: #ef233c; margin-left: auto; }
+.btn-modal-delete:hover { background: #ef233c; color: white; }
+
+/* [تأمين وحل أزمة الحذف]: إجبار صندوق الـ SweetAlert يضرب في الوش فوق البوب أب المفتوح غصب عنه */
+.swal2-container {
+    z-index: 100000 !important; 
+}
+
+/* ضبط الهوامش للموبايل الصغير مع إجبار العمودين */
+@media (max-width: 600px) {
+    .notes-masonry-grid { column-gap: 12px !important; }
+    .note-card { padding: 12px !important; border-radius: 12px !important; }
+    .note-title { font-size: 17px !important; }
+    .note-content { font-size: 15px !important; line-height: 1.5 !important; }
+    .note-modal { width: 95% !important; height: 85vh !important; padding: 15px !important; }
+}

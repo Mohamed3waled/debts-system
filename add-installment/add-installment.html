@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة خطة تقسيط | نظام المديونيات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../dashboard.css">
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-brand">
+            <i class="fa-solid fa-calculator"></i>
+            <span>إضافة خطة تقسيط جديدة</span>
+        </div>
+        <a href="../dashboard.html" class="btn-back">
+            <i class="fa-solid fa-arrow-right"></i> عودة للوحة
+        </a>
+    </nav>
+
+    <main class="dashboard-container">
+        <div class="modern-card form-card section-container">
+            <form id="installmentPlanForm">
+                <h3 class="section-title"><i class="fa-solid fa-file-signature"></i> تفاصيل خطة التقسيط</h3>
+                
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>اسم العميل <span style="color:red;">*</span></label>
+                        <input type="text" id="clientName" required placeholder="اكتب اسم العميل">
+                    </div>
+                    <div class="input-group">
+                        <label>تفاصيل القسط (السلعة أو سبب المديونية) <span style="color:red;">*</span></label>
+                        <input type="text" id="planDetails" required placeholder="مثال: موبايل سامسونج / قرض شخصي">
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <h3 class="section-title"><i class="fa-solid fa-percent"></i> الحسابات والنسبة</h3>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>القيمة الإجمالية (أصل المبلغ) <span style="color:red;">*</span></label>
+                        <input type="number" id="principalAmount" required placeholder="مثال: 10000">
+                    </div>
+                    <div class="input-group">
+                        <label>نسبة الفائدة (%) <span style="color:red;">*</span></label>
+                        <input type="number" id="interestRate" required placeholder="مثال: 20">
+                    </div>
+                    <div class="input-group">
+                        <label>عدد الشهور <span style="color:red;">*</span></label>
+                        <input type="number" id="monthsCount" required placeholder="مثال: 12">
+                    </div>
+                </div>
+
+                <div class="calc-summary" id="installmentCalcSummary" style="background: rgba(67, 97, 238, 0.05); color: #4361ee; border-color: rgba(67, 97, 238, 0.3); padding: 12px; border-radius: 8px; font-family: 'Rubik', sans-serif; font-size: 14px; text-align: center; margin-bottom: 15px; display: block;">
+                    </div>
+
+                <button type="submit" id="savePlanBtn" class="btn-submit">
+                    <i class="fa-solid fa-floppy-disk"></i> حفظ خطة التقسيط
+                </button>
+            </form>
+        </div>
+
+        <hr class="divider" id="sectionDivider">
+
+        <div class="search-container">
+            <i class="fa-solid fa-search search-icon"></i>
+            <input type="text" id="searchInput" placeholder="ابحث باسم العميل لعرض خطط التقسيط...">
+        </div>
+
+        <div id="installmentsContainer" class="responsive-grid">
+        </div>
+
+    </main>
+
+    <script type="module" src="add-installment.js?v=6"></script>
+</body>
+</html>
