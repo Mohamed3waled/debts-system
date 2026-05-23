@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب جديد - سيستم المديونيات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="../style/style.css">
+ </head>
+<body>
+
+    <div class="card login-card">
+        <h2>إنشاء حساب جديد</h2>
+        <form id="registerForm" autocomplete="on">
+
+            <div class="modern-form-group">
+                <label for="regEmail">البريد الإلكتروني</label>
+                <input type="email" id="regEmail" name="email" autocomplete="username" placeholder="admin@example.com" required>
+            </div>
+
+            <div class="modern-form-group" style="margin-top: 20px;">
+                <label for="regPassword">كلمة المرور</label>
+                <input type="password" id="regPassword" name="password" autocomplete="new-password" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" id="registerBtn">إنشاء الحساب </button>
+
+            <div style="text-align: center; margin-top: 20px; font-family: 'Rubik', sans-serif;">
+                <a href="../index.html" style="font-size: 13px; color: #64748b; text-decoration: none;">لديك حساب بالفعل؟ تسجيل الدخول</a>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="register.js?v=3"></script>
+</body>
+</html>
